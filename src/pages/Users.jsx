@@ -10,7 +10,7 @@ const Users = () => {
 
   useEffect(() => {
     const getUsers = async () => {
-      const result = await axios.get(`/users?pag=${id}`);
+      const result = await axios.get(`/users?page=${id}`);
       console.log(result.data.data);
       setUsers(result.data.data);
       // console.log(users);
