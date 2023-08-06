@@ -1,16 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 
 const UsersDetail = () => {
   const [user, setUsers] = useState();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await axios.get(`/users/${id}`);
-      setUsers(data.data);
+      try {
+        const { data } = await axios.get(`/users/${id}`);
+        setUsers(data.data);
+      } catch (error) {
+        console.log(error.message);
+        navigate("/404");
+      }
     };
     getUser();
   }, [id]);

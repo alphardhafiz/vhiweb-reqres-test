@@ -1,20 +1,29 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     const getUsers = async () => {
-      const result = await axios.get(`/users?page=${id}`);
-      setUsers(result.data.data);
+      try {
+        const result = await axios.get(`/users?page=${id}`);
+        setUsers(result.data.data);
+        console.log(result.data.data.length);
+        if (result.data.data.length === 0) {
+          navigate("/404");
+        }
+      } catch (error) {
+        console.log(error.message);
+        navigate("/404");
+      }
     };
     getUsers();
-    console.log(id);
   }, [id]);
 
   return (
