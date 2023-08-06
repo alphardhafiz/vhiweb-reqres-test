@@ -1,0 +1,148 @@
+$primary-color: #ec7c2d;
+$secondary-color: #f1e1d2;
+$shadow1: 1px 1px 3px
+  rgba(
+    $color: #000000,
+    $alpha: 0.5,
+  );
+$shadow2: 2px 2px 5px
+  rgba(
+    $color: #000000,
+    $alpha: 0.5,
+  );
+$font: Arial, Helvetica, sans-serif;
+@mixin flex-box($direction: row, $justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font;
+}
+
+// header
+header {
+  @include flex-box();
+  background-color: $secondary-color;
+  height: 10vh;
+  a {
+    color: black;
+    text-decoration: none;
+    font-size: 2em;
+    span {
+      color: $primary-color;
+      font-weight: 800;
+    }
+  }
+}
+
+// Login
+.login {
+  margin-top: 100px;
+  h1 {
+    text-align: center;
+  }
+  height: 90vh;
+  form {
+    @include flex-box($direction: column);
+    gap: 10px;
+    .error-message {
+      color: red;
+    }
+  }
+}
+
+// button
+button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: $shadow1;
+  transition: 0.3s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: $secondary-color;
+  color: black;
+  box-shadow: $shadow2;
+}
+
+// input
+input {
+  padding: 8px 10px;
+  border-radius: 4px;
+  outline: none;
+  font-family: inherit;
+}
+
+input:focus {
+  box-shadow: $shadow2;
+}
+
+// user detail
+.user-list {
+  ul {
+    list-style: none;
+    @include flex-box();
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 20px;
+    gap: 50px;
+    li {
+      @include flex-box(column);
+      border: 1px solid $secondary-color;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.5);
+    }
+  }
+}
+
+// pages
+.pages {
+  @include flex-box();
+  gap: 20px;
+}
+
+// detail
+.detail {
+  // height: 40vh;
+  // background-color: red;
+  .button-backtouserlist {
+    margin-top: 50px;
+    display: block;
+    text-align: center;
+  }
+}
+
+// user-detail
+.user-detail {
+  @include flex-box();
+  gap: 30px;
+  margin-top: 50px;
+}
+
+// Error 404
+#oopss {
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  width: 100%;
+  height: 100%;
+  line-height: 1.5em;
+  z-index: 99;
+  #error-text {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
