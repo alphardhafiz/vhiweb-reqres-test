@@ -14,11 +14,9 @@ const Login = () => {
     e.preventDefault();
     try {
       const result = await axios.post("/login", { email, password });
-      console.log(result.data);
       setToken(result.data);
       setErrorMsg("");
     } catch (error) {
-      console.log(error.response.data.error);
       setErrorMsg(error.response.data.error);
     }
   };

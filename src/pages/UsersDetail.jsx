@@ -10,7 +10,6 @@ const UsersDetail = () => {
   useEffect(() => {
     const getUser = async () => {
       const { data } = await axios.get(`/users/${id}`);
-      console.log(data.data);
       setUsers(data.data);
     };
     getUser();
