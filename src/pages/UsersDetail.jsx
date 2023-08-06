@@ -19,7 +19,7 @@ const UsersDetail = () => {
       }
     };
     getUser();
-  }, [id]);
+  }, [id, navigate]);
 
   return (
     <div className="detail">
