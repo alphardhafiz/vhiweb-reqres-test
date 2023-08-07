@@ -14,7 +14,6 @@ const Users = () => {
       try {
         const result = await axios.get(`/users?page=${id}`);
         setUsers(result.data.data);
-        console.log(result.data.data.length);
         if (result.data.data.length === 0) {
           navigate("/404");
         }
