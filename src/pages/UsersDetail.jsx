@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
+import SkeletonProfile from "../components/skeletons/SkeletonProfile";
 
 const UsersDetail = () => {
   const [user, setUsers] = useState();
@@ -36,7 +37,7 @@ const UsersDetail = () => {
           </div>
         </div>
       )}
-      {!user && <div>loading....</div>}
+      {!user && <SkeletonProfile className="user-detail" />}
       <Link to="/users/page/1" className="button-backtouserlist">
         <Button text={"Back to User List"} />
       </Link>

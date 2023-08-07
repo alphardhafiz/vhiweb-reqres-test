@@ -23,24 +23,20 @@ const Users = () => {
       }
     };
     getUsers();
-  }, [id]);
+  }, [id, navigate]);
 
   return (
     <div className="user-list">
       <ul>
-        {users ? (
-          users.map((user) => (
-            <li key={user.id}>
-              <p>First Name: {user.first_name}</p>
-              <p>Last Name: {user.last_name}</p>
-              <Link to={`/users/detail/${user.id}`}>
-                <Button text="Detail" />
-              </Link>
-            </li>
-          ))
-        ) : (
-          <div>loading..</div>
-        )}
+        {users.map((user) => (
+          <li key={user.id}>
+            <p>First Name: {user.first_name}</p>
+            <p>Last Name: {user.last_name}</p>
+            <Link to={`/users/detail/${user.id}`}>
+              <Button text="Detail" />
+            </Link>
+          </li>
+        ))}
       </ul>
 
       <div className="pages">
